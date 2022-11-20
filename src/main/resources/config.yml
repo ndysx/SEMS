@@ -1,0 +1,8 @@
+# 数据库地址
+mysql_url: "localhost:3306/sems"
+
+# 用户名
+mysql_username: "root"
+
+# 密码
+mysql_password: "1314521123"
