@@ -84,7 +84,7 @@ public class Utils {
     public boolean ifPasswordRight(String userType, String name, String password) {
         EssDB essDB = new EssDB();
         Connection connection = essDB.mysqlConnection();
-        String adminInfoSql = "select * from " + userType + "s_sub where adminName=" + name;
+        String adminInfoSql = "select * from " + userType + "s_sub where " + userType + "Name=" + name;
         ResultSet adminSubRs = essDB.selectSql(connection, adminInfoSql);
         try {
             while (adminSubRs.next()) {

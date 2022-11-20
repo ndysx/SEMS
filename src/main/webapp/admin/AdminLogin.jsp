@@ -9,13 +9,27 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../ui/mdui/css/mdui.css"/>
+    <link rel="stylesheet" type="text/css" href="../ui/layui/css/layui.css"/>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/AdminServlet" method="post">
+<form class="layui-form" action="${pageContext.request.contextPath}/AdminServlet" method="post">
     <input type="hidden" name="methodWay" value="login" required>
-    用户名：<input type="text" name="adminName" required><br>
-    密码：<input type="text" name="adminPassword" required><br>
-    <input type="submit" value="登录">
+    <div class="layui-form-item">
+        <label class="layui-form-label">账号</label>
+        <div class="layui-input-block">
+            <input type="text" name="adminName" required lay-verify="required" placeholder="请输入账号" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-inline">
+            <input type="password" name="adminPassword" required lay-verify="required" placeholder="请输入密码"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <input class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" type="submit" value="登录">
 </form>
 </body>
 </html>

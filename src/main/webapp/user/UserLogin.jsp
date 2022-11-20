@@ -9,14 +9,28 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../ui/mdui/css/mdui.css"/>
+    <link rel="stylesheet" type="text/css" href="../ui/layui/css/layui.css"/>
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/UserServlet" method="post">
     <input type="hidden" name="methodWay" value="login">
-    用户名：<input type="text" name="userName" required><br>
-    密码：<input type="text" name="userPassword" required><br>
-    <a href="UserRegister.jsp">注册账号</a>
-    <input type="submit" value="登录">
+    <div class="layui-form-item">
+        <label class="layui-form-label">账号</label>
+        <div class="layui-input-block">
+            <input type="text" name="userName" required lay-verify="required" placeholder="请输入账号" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-inline">
+            <input type="password" name="userPassword" required lay-verify="required" placeholder="请输入密码"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <input class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" type="submit" value="登录">
+    <a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="UserRegister.jsp">注册</a>
 </form>
 </body>
 </html>
