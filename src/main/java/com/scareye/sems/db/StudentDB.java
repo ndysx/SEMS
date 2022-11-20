@@ -17,7 +17,7 @@ public class StudentDB extends EssDB {
         if (attributeV == null | parameterV == null | Objects.equals(attributeV, "") | Objects.equals(parameterV, "")) {
             studentSubSql = "select * from students_sub";
         } else {
-            studentSubSql = "select  * from students_sub where " + utils.attributeChange(attributeV) + "=" + parameterV;
+            studentSubSql = "select  * from students_sub where " + attributeV + "=" + parameterV;
         }
 
         try {

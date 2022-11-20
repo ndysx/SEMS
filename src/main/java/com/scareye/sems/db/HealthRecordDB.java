@@ -18,7 +18,7 @@ public class HealthRecordDB extends EssDB {
         if (attributeV == null | parameterV == null | Objects.equals(attributeV, "") | Objects.equals(parameterV, "")) {
             recordSubSql = "select * from records_sub";
         } else {
-            recordSubSql = "select  * from records_sub where " + utils.attributeChange(attributeV) + "=" + parameterV;
+            recordSubSql = "select  * from records_sub where " + attributeV + "=" + parameterV;
         }
 
         try {

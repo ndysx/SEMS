@@ -2,8 +2,12 @@ package com.scareye.sems.service;
 
 
 import com.scareye.sems.controlObject.Student;
+import com.scareye.sems.db.EssDB;
 import com.scareye.sems.db.StudentDB;
 import com.scareye.sems.db.UserDB;
+
+import java.sql.Connection;
+import java.sql.Statement;
 
 public class UserService {
     UserDB userDB = new UserDB();
@@ -22,7 +26,14 @@ public class UserService {
     }
 
     public void changeUserStuID(String userName, int stuID) {
-        userDB.changeUserStuID(userName, stuID);
+        Connection connection = new EssDB().mysqlConnection();
+        String userInfoSql = "UPDATE users_sub SET stuID=" + stuID + " WHERE userName=" + userName;
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(userInfoSql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void deleteStudentSQL(int stuID) {

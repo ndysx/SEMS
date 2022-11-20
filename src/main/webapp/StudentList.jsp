@@ -6,18 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.scareye.sems.db.HealthRecordDB" %>
-<%@ page import="com.scareye.sems.controlObject.HealthRecord" %>
+<%@ page import="com.scareye.sems.db.StudentDB" %>
+<%@ page import="com.scareye.sems.controlObject.Student" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>核酸记录列表</title>
-    <link rel="stylesheet" type="text/css" href="ui/mdui/css/mdui.css"/>
+    <title>学生列表</title>
     <link rel="stylesheet" type="text/css" href="ui/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="ui/mdui/css/mdui.css"/>
 </head>
 <body>
 
-<form action="HealthRecordList.jsp" method="post" class="layui-form">
+<form action="StudentList.jsp" method="post">
     <div class="layui-form-item">
         <label class="layui-form-label">选择框</label>
         <div class="layui-input-block">
@@ -60,7 +60,7 @@
     String parameterV = request.getParameter("parameterValue");
 
     // 根据属性、参数查看对应列表信息
-    ArrayList healthRecordList = new HealthRecordDB().healthRecordArrayList(attributeV, parameterV);
+    ArrayList studentArrayList = new StudentDB().studentArrayList(attributeV, parameterV);
 
 %>
 <div class="mdui-table-fluid">
@@ -72,35 +72,24 @@
             <th>姓名</th>
             <th>性别</th>
             <th>年龄</th>
-            <th>手机号</th>
+            <th>电话号码</th>
             <th>班级</th>
             <th>专业</th>
-            <th>体温</th>
-            <th>核酸记录</th>
-            <th>身体状况</th>
-            <th>日期</th>
         </tr>
         </thead>
         <%
-            for (int i = 0; i < healthRecordList.size(); i++) {
-                HealthRecord healthRecord = (HealthRecord) healthRecordList.get(i);
+            for (int i = 0; i < studentArrayList.size(); i++) {
+                Student student = (Student) studentArrayList.get(i);
 
-                int id = healthRecord.getID();
-                int stuID = healthRecord.getStuID();
-                String stuName = healthRecord.getStuName();
-                String stuSex = healthRecord.getStuSex();
-                int stuAge = healthRecord.getStuAge();
-                String stuPhoneNum = healthRecord.getStuPhoneNum();
-                String stuClassNum = healthRecord.getStuClassNum();
-                String stuProfessional = healthRecord.getStuProfessional();
+                int id = student.getID();
+                int stuID = student.getStuID();
+                String stuName = student.getStuName();
+                String stuSex = student.getStuSex();
+                int stuAge = student.getStuAge();
+                String stuPhoneNum = student.getStuPhoneNum();
+                String stuClassNum = student.getStuClassNum();
+                String stuProfessional = student.getStuProfessional();
 
-                double stuTemperature = healthRecord.getStuTemperature();
-                String ifDetected = "未做";
-                if (healthRecord.getIfDetected()) {
-                    ifDetected = "已做";
-                }
-                String stuHeathSituation = healthRecord.getStuHealthSituation();
-                String dateTime = healthRecord.getDateTime();
         %>
         <tbody>
         <tr>
@@ -120,14 +109,6 @@
             </td>
             <td><%=stuProfessional%>
             </td>
-            <td><%=stuTemperature%>
-            </td>
-            <td><%=ifDetected%>
-            </td>
-            <td><%=stuHeathSituation%>
-            </td>
-            <td><%=dateTime%>
-            </td>
         </tr>
         </tbody>
         <%
@@ -135,7 +116,8 @@
         %>
     </table>
 </div>
-<script src="ui/layui/layui.js">
+<script src="ui/layui/layui.js"></script>
+<script>
     layui.use('form', function () {
         var form = layui.form;
     });

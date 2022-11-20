@@ -8,7 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>用户首页</title>
+    <link rel="stylesheet" type="text/css" href="../ui/mdui/css/mdui.css"/>
 </head>
 <body>
 <%
@@ -16,10 +17,16 @@
         response.sendRedirect("UserLogin.jsp");
     } else {
 %>
-用户首页
-<a href="BindSelfInfo.jsp">绑定个人信息</a>
-<a href="../HealthRecordList.jsp">核酸记录</a>
 
+<div class="mdui-row-xs-2">
+
+    <a class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" href="BindSelfInfo.jsp">个人信息</a>
+
+
+    <a class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple"
+       href="../HealthRecordList.jsp">核酸记录</a>
+
+</div>
 <%
     }
 %>
