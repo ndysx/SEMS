@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>管理员页面</title>
+    <link rel="stylesheet" type="text/css" href="../ui/mdui/css/mdui.css"/>
 </head>
 <body>
 <%
@@ -17,10 +18,14 @@
     } else {
 %>
 
-<a href="SubManager.jsp?subName=Student">学生管理</a>
-<a href="SubManager.jsp?subName=User">用户管理</a>
-<a href="SubManager.jsp?subName=Record">核酸管理</a>
-
+<div class="mdui-row-xs-2">
+    <a class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple"
+       href="SubManager.jsp?subName=Student">学生管理</a>
+    <a class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple"
+       href="SubManager.jsp?subName=User">用户管理</a>
+    <a class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple"
+       href="SubManager.jsp?subName=Record">核酸管理</a>
+</div>
 <%
     }
 %>

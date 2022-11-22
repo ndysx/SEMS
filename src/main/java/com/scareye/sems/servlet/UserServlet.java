@@ -39,9 +39,11 @@ public class UserServlet extends HttpServlet {
                 UserService userService = new UserService();
                 // 从 session 获取用户名
                 String userName = (String) request.getSession().getAttribute("userName");
+                int stuID = Integer.parseInt(request.getParameter("stuID"));
                 if (userService.getUserStuID(userName) == 0) {
                     // 获取用户的学生ID == 0
-                    Student student = new Student(0, Integer.parseInt(request.getParameter("stuID")),
+                    Student student = new Student(0,
+                            stuID,
                             request.getParameter("stuName"),
                             request.getParameter("stuSex"),
                             Integer.parseInt(request.getParameter("stuAge")),
@@ -51,7 +53,7 @@ public class UserServlet extends HttpServlet {
                     );
                     StudentDB studentDB = new StudentDB();
                     studentDB.insertStudent(student);
-                    userService.changeUserStuID(userName, Integer.parseInt(request.getParameter("stuID")));
+                    userService.changeUserStuID(userName, stuID);
                     response.sendRedirect("user/UserIndex.jsp");
                 }
                 break;
